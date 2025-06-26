@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>C# Code Snippets with Output</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #4a90e2;
+      --accent-color: #3498db;
+      --light-bg: #f8fafc;
+      --dark-text: #2d3748;
+      --light-text: #718096;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--dark-text);
+      line-height: 1.6;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #1a2a3a 100%);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .header::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-color), #fbd46d);
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin: 0;
+      padding: 0;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background-color: #ffffff;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .section {
+      padding: 2rem;
+    }
+
+    .code-output-pair {
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .code-output-pair:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    pre {
+      margin: 0;
+      border-radius: 8px 8px 0 0;
+      overflow-x: auto;
+    }
+
+    .output {
+      background-color: #f0f7ff;
+      border-left: 4px solid var(--secondary-color);
+      padding: 1rem;
+      font-family: 'Fira Code', monospace;
+      color: var(--dark-text);
+      font-size: 0.9rem;
+      border-radius: 0 0 8px 8px;
+      position: relative;
+    }
+
+    .output::before {
+      content: "Output";
+      position: absolute;
+      top: -22px;
+      left: 0;
+      background-color: var(--secondary-color);
+      color: white;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 4px 4px 0 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .description {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      margin: 0.4rem 0;
+      color: var(--light-text);
+    }
+
+    .footer {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #1a2a3a 100%);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-color), #fbd46d);
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    .footer strong {
+      color: #fbd46d;
+      font-weight: 600;
+    }
+
+    .footer .copyright {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-top: 0.5rem;
+    }
+
+    .footer .divider {
+      margin: 0 0.5rem;
+      opacity: 0.5;
+    }
+
+    code[class*="language-"] {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 1rem;
+        border-radius: 8px;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .section {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1 class="page-title">C# Code Snippets</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+
+<!-- START OF SNIPPETS -->
+<!-- Snippet blocks below have been auto-inserted. -->
+
+<!-- 1 -->
+<div class="code-output-pair">
+  <p class="description"><strong>1. Reverse a string</strong></p>
+  <pre><code class="language-csharp">string input1 = "hello";
+string reversed = new string(input1.Reverse().ToArray());
+Console.WriteLine("Reversed string is - " + reversed);</code></pre>
+  <div class="output">Reversed string is - olleh</div>
+</div>
+
+<!-- 2 -->
+<div class="code-output-pair">
+  <p class="description"><strong>2. Check if a string is a palindrome</strong></p>
+  <pre><code class="language-csharp">string input2 = "madam";
+bool isPalindrome = input2.SequenceEqual(input2.Reverse());
+Console.WriteLine("Is palindrome - " + isPalindrome);</code></pre>
+  <div class="output">Is palindrome - True</div>
+</div>
+
+<!-- 3 -->
+<div class="code-output-pair">
+  <p class="description"><strong>3. Remove duplicate characters from a string</strong></p>
+  <pre><code class="language-csharp">string input3 = "banana";
+string distinct = new string(input3.Distinct().ToArray());
+Console.WriteLine("Removed duplicates - " + distinct);</code></pre>
+  <div class="output">Removed duplicates - ban</div>
+</div>
+
+<!-- 4 -->
+<div class="code-output-pair">
+  <p class="description"><strong>4. Count vowels in a string</strong></p>
+  <pre><code class="language-csharp">string input4 = "hello";
+int count = input4.Count(c => "aeiouAEIOU".Contains(c));
+Console.WriteLine("Count of vowels - " + count);</code></pre>
+  <div class="output">Count of vowels - 2</div>
+</div>
+
+<!-- 5 -->
+<div class="code-output-pair">
+  <p class="description"><strong>5. Find the first non-repeated character</strong></p>
+  <pre><code class="language-csharp">string input5 = "swiss";
+char rslt = input5.GroupBy(c => c)
+       .Where(g => g.Count() == 1)
+       .Select(g => g.Key)
+       .FirstOrDefault();
+Console.WriteLine("First non-repeated character - " + rslt);</code></pre>
+  <div class="output">First non-repeated character - w</div>
+</div>
+
+<!-- 6 -->
+<div class="code-output-pair">
+  <p class="description"><strong>6. Find the most frequent character</strong></p>
+  <pre><code class="language-csharp">string input6 = "test";
+char mostFrequent = input6.GroupBy(c => c)
+                 .OrderByDescending(g => g.Count())
+                 .First().Key;
+Console.WriteLine("Most frequent character - " + mostFrequent);</code></pre>
+  <div class="output">Most frequent character - t</div>
+</div>
+
+<!-- 7 -->
+<div class="code-output-pair">
+  <p class="description"><strong>7. Check if two strings are anagrams</strong></p>
+  <pre><code class="language-csharp">string s1 = "listen", s2 = "silent";
+bool areAnagrams = s1.OrderBy(c => c).SequenceEqual(s2.OrderBy(c => c));
+Console.WriteLine("Is anagrams - " + areAnagrams);</code></pre>
+  <div class="output">Is anagrams - True</div>
+</div>
+
+<!-- 8 -->
+<div class="code-output-pair">
+  <p class="description"><strong>8. Count character frequencies</strong></p>
+  <pre><code class="language-csharp">string input8 = "aabbcc";
+var groups = input8.GroupBy(c => c)
+          .ToDictionary(g => g.Key, g => g.Count());
+foreach (var pair in groups)
+    Console.WriteLine($"{pair.Key} appears {pair.Value} times.");</code></pre>
+  <div class="output">a appears 2 times.<br>b appears 2 times.<br>c appears 2 times.</div>
+</div>
+
+<!-- 9 -->
+<div class="code-output-pair">
+  <p class="description"><strong>9. Extract digits from a string</strong></p>
+  <pre><code class="language-csharp">string input9 = "abc123d4";
+string digits = new string(input9.Where(char.IsDigit).ToArray());
+Console.WriteLine("Digits are - " + digits);</code></pre>
+  <div class="output">Digits are - 1234</div>
+</div>
+
+<!-- 10 -->
+<div class="code-output-pair">
+  <p class="description"><strong>10. Check if all characters are unique</strong></p>
+  <pre><code class="language-csharp">string input10 = "abcdef";
+bool allUnique = input10.Distinct().Count() == input10.Length;
+Console.WriteLine("Is all characters unique - " + allUnique);</code></pre>
+  <div class="output">Is all characters unique - True</div>
+</div>
+
+<!-- 11 -->
+<div class="code-output-pair">
+  <p class="description"><strong>11. Find the longest word in a sentence</strong></p>
+  <pre><code class="language-csharp">string sentence = "The quick brown fox jumps over the lazy dog";
+string longest = sentence.Split(' ')
+     .OrderByDescending(word => word.Length)
+     .FirstOrDefault();
+Console.WriteLine("Longest word - " + longest);</code></pre>
+  <div class="output">Longest word - quick</div>
+</div>
+
+<!-- 12 -->
+<div class="code-output-pair">
+  <p class="description"><strong>12. Count occurrences of a specific character</strong></p>
+  <pre><code class="language-csharp">string input12 = "mississippi";
+char target = 's';
+int occurrences = input12.Count(c => c == target);
+Console.WriteLine($"'{target}' occurs {occurrences} times.");</code></pre>
+  <div class="output">'s' occurs 4 times.</div>
+</div>
+
+<!-- 13 -->
+<div class="code-output-pair">
+  <p class="description"><strong>13. Convert string to title case</strong></p>
+  <pre><code class="language-csharp">string input13 = "hello world";
+string titleCase = string.Join(" ", input13.Split(' ')
+    .Select(word => char.ToUpper(word[0]) + word.Substring(1)));
+Console.WriteLine("Title Case - " + titleCase);</code></pre>
+  <div class="output">Title Case - Hello World</div>
+</div>
+
+<!-- 14 -->
+<div class="code-output-pair">
+  <p class="description"><strong>14. Replace spaces with underscores</strong></p>
+  <pre><code class="language-csharp">string input14 = "replace all spaces";
+string replaced = input14.Replace(" ", "_");
+Console.WriteLine("Replaced string - " + replaced);</code></pre>
+  <div class="output">Replaced string - replace_all_spaces</div>
+</div>
+
+<!-- 15 -->
+<div class="code-output-pair">
+  <p class="description"><strong>15. Count words in a sentence</strong></p>
+  <pre><code class="language-csharp">string input15 = "This is a test sentence";
+int wordCount = input15.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length;
+Console.WriteLine("Word count - " + wordCount);</code></pre>
+  <div class="output">Word count - 5</div>
+</div>
+
+<!-- 16 -->
+<div class="code-output-pair">
+  <p class="description"><strong>16. Remove punctuation from a string</strong></p>
+  <pre><code class="language-csharp">string input16 = "Hello, world! This is C#.";
+string cleaned = new string(input16.Where(c => !char.IsPunctuation(c)).ToArray());
+Console.WriteLine("Without punctuation - " + cleaned);</code></pre>
+  <div class="output">Without punctuation - Hello world This is C</div>
+</div>
+
+<!-- 17 -->
+<div class="code-output-pair">
+  <p class="description"><strong>17. List duplicate characters</strong></p>
+  <pre><code class="language-csharp">string input17 = "programming";
+var duplicates = input17.GroupBy(c => c)
+    .Where(g => g.Count() > 1)
+    .Select(g => g.Key);
+Console.WriteLine("Duplicate characters - " + string.Join(", ", duplicates));</code></pre>
+  <div class="output">Duplicate characters - r, g, m</div>
+</div>
+
+<!-- 18 -->
+<div class="code-output-pair">
+  <p class="description"><strong>18. Reverse each word in a sentence</strong></p>
+  <pre><code class="language-csharp">string input18 = "hello world";
+string reversedWords = string.Join(" ", input18.Split(' ')
+    .Select(word => new string(word.Reverse().ToArray())));
+Console.WriteLine("Each word reversed - " + reversedWords);</code></pre>
+  <div class="output">Each word reversed - olleh dlrow</div>
+</div>
+
+<!-- 19 -->
+<div class="code-output-pair">
+  <p class="description"><strong>19. Check if a string contains only digits</strong></p>
+  <pre><code class="language-csharp">string input19 = "123456";
+bool isAllDigits = input19.All(char.IsDigit);
+Console.WriteLine("Is all digits - " + isAllDigits);</code></pre>
+  <div class="output">Is all digits - True</div>
+</div>
+
+<!-- 20 -->
+<div class="code-output-pair">
+  <p class="description"><strong>20. Find common characters between two strings</strong></p>
+  <pre><code class="language-csharp">string a = "house", b = "mouse";
+var commonChars = a.Intersect(b);
+Console.WriteLine("Common characters - " + string.Join(", ", commonChars));</code></pre>
+  <div class="output">Common characters - o, u, s, e</div>
+</div>
+
+<!-- END OF SNIPPETS -->
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-text">Crafted with <strong>C#</strong> and <strong>Linq</strong> by <strong>Rajat Chauhan</strong></p>
+      <p class="copyright">© 2025<span class="divider">|</span>All rights reserved</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+</body>
+</html>
